@@ -1,19 +1,27 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <AccordionCombo v-model="active" label="accordion">
+      <div>
+        <strong>Hello World!</strong>
+      </div>
+    </AccordionCombo>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Vue from 'vue'
+import AccordionCombo from './components/AccordionCombo.vue'
 
-export default {
-  name: "app",
+export default Vue.extend({
   components: {
-    HelloWorld
-  }
-};
+    AccordionCombo,
+  },
+
+  data: () => ({
+    active: false,
+  }),
+})
 </script>
 
 <style lang="stylus">
