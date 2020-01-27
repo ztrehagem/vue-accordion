@@ -1,4 +1,4 @@
-# vue-accordion
+# @ztrehagem/vue-accordion
 
 ## Project setup
 ```
@@ -7,10 +7,10 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for publish
 ```
 npm run build
 ```
