@@ -1,9 +1,17 @@
 <template>
-  <div class="vue-accordion" ref="root" :class="rootClass" :style="rootStyle">
-    <div class="vue-accordion__inner" ref="inner">
-      <slot></slot>
+  <transition
+    :duration="duration"
+    @enter="onEnter"
+    @after-enter="onAfterEnter"
+    @before-leave="onBeforeLeave"
+    @leave="onLeave"
+  >
+    <div class="vue-accordion" ref="wrapper" :style="wrapperStyle" v-if="value">
+      <div class="vue-accordion__inner" ref="inner">
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -20,66 +28,57 @@ export default Vue.extend({
     },
 
     duration: {
-      type: Number,
+      type: [Number, Object],
       default: 250,
     },
   },
 
-  data() {
-    return {
-      animating: false,
-    }
-  },
-
   computed: {
-    rootStyle() {
+    wrapperStyle() {
       return {
         transitionDuration: `${this.duration}ms`,
       }
     },
 
-    rootClass() {
-      return {
-        'vue-accordion--trim': this.animating || !this.value,
-      }
+    enterDuration() {
+      return typeof this.duration === 'number'
+        ? this.duration
+        : this.duration.enter
     },
-  },
 
-  watch: {
-    value() {
-      this.apply()
+    leaveDuration() {
+      return typeof this.duration === 'number'
+        ? this.duration
+        : this.duration.leave
     },
   },
 
   mounted() {
-    this.setWrapperHeightTo(this.value ? this.getContentHeight() : 0)
+    if (this.value) {
+      this.setWrapperHeightTo('auto')
+    }
   },
 
   methods: {
-    apply() {
-      if (this.value) {
-        this.expand()
-      } else {
-        this.collapse()
-      }
+    async onEnter(el, done) {
+      this.setWrapperHeightTo(this.getContentHeight(), el)
+      await wait(this.enterDuration)
+      done()
     },
 
-    async expand() {
-      this.animating = true
-      this.setWrapperHeightTo(this.getContentHeight())
-      await wait(this.duration)
-      if (this.value) {
-        this.setWrapperHeightTo('auto')
-        this.animating = false
-      }
+    onAfterEnter(el) {
+      this.setWrapperHeightTo('auto', el)
     },
 
-    async collapse() {
-      this.setWrapperHeightTo(this.getContentHeight())
-      await wait()
-      if (!this.value) {
-        this.setWrapperHeightTo(0)
-      }
+    onBeforeLeave(el) {
+      this.setWrapperHeightTo(this.getContentHeight(), el)
+    },
+
+    async onLeave(el, done) {
+      window.getComputedStyle(el).height
+      this.setWrapperHeightTo(0, el)
+      await wait(this.leaveDuration)
+      done()
     },
 
     getContentHeight() {
@@ -90,9 +89,8 @@ export default Vue.extend({
     /**
      * @param {number | 'auto'} height
      */
-    setWrapperHeightTo(height) {
-      const root = this.$refs.root
-      root.style.height = height === 'auto' ? height : `${height}px`
+    setWrapperHeightTo(height, el = this.$refs.wrapper) {
+      el.style.height = height === 'auto' ? height : `${height}px`
     },
   },
 })
@@ -103,11 +101,9 @@ export default Vue.extend({
   transition-timing-function ease
   transition-property height
   height 0
+  overflow hidden
 
   &__inner
     display table
     width 100%
-
-  &--trim
-    overflow hidden
 </style>

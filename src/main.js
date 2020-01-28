@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './plugins/vue-accordion'
 
 Vue.config.productionTip = false
 

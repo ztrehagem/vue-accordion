@@ -9,18 +9,25 @@
         <div class="faq-accordion-combo__trigger-label">{{ label }}</div>
       </div>
     </button>
-    <vue-accordion v-model="active">
+    <VueAccordion v-model="active">
       <div class="faq-accordion-combo__content">
         <slot></slot>
       </div>
-    </vue-accordion>
+    </VueAccordion>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+// import VueAccordion from '../../'
+// import '../../dist/vue-accordion.css'
+import VueAccordion from '../lib/VueAccordion.vue'
 
 export default Vue.extend({
+  components: {
+    VueAccordion,
+  },
+
   props: {
     label: {
       type: String,
@@ -30,7 +37,7 @@ export default Vue.extend({
 
   data() {
     return {
-      active: false,
+      active: true,
     }
   },
 
