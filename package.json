@@ -1,6 +1,6 @@
 {
   "name": "@ztrehagem/vue-accordion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Shigeki Suwa <shigeki.suwa@ztrehagem.dev>",
   "license": "UNLICENSED",
   "publishConfig": {
@@ -16,8 +16,7 @@
     "lint": "vue-cli-service lint",
     "prepare": "npm run build"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
