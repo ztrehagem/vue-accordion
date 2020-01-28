@@ -1,6 +1,44 @@
 # @ztrehagem/vue-accordion
 
-## Project setup
+## Usage
+
+1. Install
+
+    ```
+    npm install @ztrehagem/vue-accordion
+    ```
+    
+2. Import default style (optional)
+
+    ```js
+    // for css loaders
+    import '@ztrehagem/vue-accordion/dist/vue-accordion.css'
+    ```
+    or
+    ```scss
+    // for css preprocessors
+    @import '~@ztrehagem/vue-accordion/dist/vue-accordion.css'
+    ```
+    
+3. Use as component
+
+    ```js
+    import VueAccordion from '@ztrehagem/vue-accordion'
+
+    export default {
+      components: {
+        VueAccordion
+      }
+    }
+    ```
+    ```html
+    <VueAccordion v-model="isExpanded">
+      <strong>Hello World!</strong>
+    </VueAccordion>
+    ```
+
+
+## Development setup
 ```
 npm install
 ```
