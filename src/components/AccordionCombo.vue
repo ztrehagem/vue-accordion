@@ -9,7 +9,7 @@
         <div class="faq-accordion-combo__trigger-label">{{ label }}</div>
       </div>
     </button>
-    <VueAccordion v-model="active">
+    <VueAccordion v-model="active" :duration="duration">
       <div class="faq-accordion-combo__content">
         <slot></slot>
       </div>
@@ -35,11 +35,13 @@ export default Vue.extend({
     },
   },
 
-  data() {
-    return {
-      active: true,
-    }
-  },
+  data: () => ({
+    active: true,
+    duration: {
+      enter: 1000,
+      leave: 2000,
+    },
+  }),
 
   methods: {
     toggle() {

@@ -1,10 +1,10 @@
 <template>
   <transition
-    :duration="duration"
     @enter="onEnter"
     @after-enter="onAfterEnter"
     @before-leave="onBeforeLeave"
     @leave="onLeave"
+    @after-leave="onAfterLeave"
   >
     <div class="vue-accordion" ref="wrapper" :style="wrapperStyle" v-if="value">
       <div class="vue-accordion__inner" ref="inner">
@@ -17,7 +17,8 @@
 <script>
 import Vue from 'vue'
 
-const wait = (ms = 0) => new Promise((resolve) => setTimeout(resolve, ms))
+const ENTER = 'enter'
+const LEAVE = 'leave'
 
 export default Vue.extend({
   props: {
@@ -33,10 +34,17 @@ export default Vue.extend({
     },
   },
 
+  data: (vm) => ({
+    previousMove: vm.value ? ENTER : LEAVE,
+  }),
+
   computed: {
     wrapperStyle() {
+      const duration =
+        this.previousMove === ENTER ? this.leaveDuration : this.enterDuration
+
       return {
-        transitionDuration: `${this.duration}ms`,
+        transitionDuration: `${duration}ms`,
       }
     },
 
@@ -60,25 +68,27 @@ export default Vue.extend({
   },
 
   methods: {
-    async onEnter(el, done) {
+    async onEnter(el) {
       this.setWrapperHeightTo(this.getContentHeight(), el)
-      await wait(this.enterDuration)
-      done()
     },
 
     onAfterEnter(el) {
       this.setWrapperHeightTo('auto', el)
+      this.previousMove = ENTER
     },
 
     onBeforeLeave(el) {
+      this.previousMove = LEAVE
       this.setWrapperHeightTo(this.getContentHeight(), el)
     },
 
-    async onLeave(el, done) {
+    async onLeave(el) {
       window.getComputedStyle(el).height
       this.setWrapperHeightTo(0, el)
-      await wait(this.leaveDuration)
-      done()
+    },
+
+    onAfterLeave() {
+      this.previousMove = LEAVE
     },
 
     getContentHeight() {
