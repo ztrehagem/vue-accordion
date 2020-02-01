@@ -1,5 +1,11 @@
 {
   "name": "@ztrehagem/vue-accordion",
+  "description": "A simple accordion component of Vue.js.",
+  "keywords": [
+    "Vue.js",
+    "Component",
+    "Accordion"
+  ],
   "version": "0.1.1",
   "author": "Shigeki Suwa <shigeki.suwa@ztrehagem.dev>",
   "license": "UNLICENSED",
