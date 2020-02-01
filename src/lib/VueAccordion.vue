@@ -96,7 +96,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .vue-accordion
   transition-timing-function ease
   transition-property height
