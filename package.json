@@ -6,7 +6,7 @@
     "Component",
     "Accordion"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Shigeki Suwa <shigeki.suwa@ztrehagem.dev>",
   "license": "UNLICENSED",
   "publishConfig": {
