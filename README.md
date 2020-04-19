@@ -7,7 +7,7 @@
     ```
     npm install @ztrehagem/vue-accordion
     ```
-    
+
 2. Import default style (optional)
 
     ```js
@@ -19,7 +19,7 @@
     // for css preprocessors
     @import '~@ztrehagem/vue-accordion/dist/vue-accordion.css'
     ```
-    
+
 3. Use as component
 
     ```js
@@ -32,7 +32,7 @@
     }
     ```
     ```html
-    <VueAccordion v-model="isExpanded">
+    <VueAccordion :expanded="isExpanded">
       <strong>Hello World!</strong>
     </VueAccordion>
     ```

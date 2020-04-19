@@ -6,7 +6,12 @@
     @leave="onLeave"
     @after-leave="onAfterLeave"
   >
-    <div class="vue-accordion" ref="wrapper" :style="wrapperStyle" v-if="value">
+    <div
+      class="vue-accordion"
+      ref="wrapper"
+      :style="wrapperStyle"
+      v-if="expanded"
+    >
       <div class="vue-accordion__inner" ref="inner">
         <slot></slot>
       </div>
@@ -22,8 +27,7 @@ const LEAVE = 'leave'
 
 export default Vue.extend({
   props: {
-    // v-model
-    value: {
+    expanded: {
       type: Boolean,
       required: true,
     },
@@ -35,7 +39,7 @@ export default Vue.extend({
   },
 
   data: (vm) => ({
-    previousMove: vm.value ? ENTER : LEAVE,
+    previousMove: vm.expanded ? ENTER : LEAVE,
   }),
 
   computed: {
@@ -62,7 +66,7 @@ export default Vue.extend({
   },
 
   mounted() {
-    if (this.value) {
+    if (this.expanded) {
       this.setWrapperHeightTo('auto')
     }
   },

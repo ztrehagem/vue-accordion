@@ -9,7 +9,7 @@
         <div class="faq-accordion-combo__trigger-label">{{ label }}</div>
       </div>
     </button>
-    <VueAccordion v-model="active" :duration="duration">
+    <VueAccordion :expanded="active" :duration="duration">
       <div class="faq-accordion-combo__content">
         <slot></slot>
       </div>
