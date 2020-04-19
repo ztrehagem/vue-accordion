@@ -83,7 +83,7 @@ export default Vue.extend({
     },
 
     async onLeave(el) {
-      window.getComputedStyle(el).height
+      el.scrollHeight
       this.setWrapperHeightTo(0, el)
     },
 
