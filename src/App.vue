@@ -1,10 +1,13 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <AccordionCombo v-model="active" label="accordion">
-      <div>
-        <strong>Hello World!</strong>
-      </div>
+  <div>
+    <h1>@ztrehagem/vue-accordion</h1>
+    <AccordionCombo label="accordion">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
+        blanditiis ipsam pariatur, optio omnis explicabo similique laudantium
+        ratione dolore temporibus. Alias voluptate qui, recusandae in ea
+        mollitia molestias hic adipisci.
+      </p>
     </AccordionCombo>
   </div>
 </template>
@@ -17,19 +20,5 @@ export default Vue.extend({
   components: {
     AccordionCombo,
   },
-
-  data: () => ({
-    active: false,
-  }),
 })
 </script>
-
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
-</style>

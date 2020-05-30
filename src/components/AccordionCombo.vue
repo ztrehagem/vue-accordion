@@ -65,6 +65,7 @@ export default Vue.extend({
     background none
     border none
     appearance none
+    padding 0
 
     &:focus
       outline none
