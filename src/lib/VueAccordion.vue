@@ -4,7 +4,6 @@
     @after-enter="onAfterEnter"
     @before-leave="onBeforeLeave"
     @leave="onLeave"
-    @after-leave="onAfterLeave"
   >
     <div
       class="vue-accordion"
@@ -22,9 +21,6 @@
 <script>
 import Vue from 'vue'
 
-const ENTER = 'enter'
-const LEAVE = 'leave'
-
 export default Vue.extend({
   props: {
     expanded: {
@@ -33,35 +29,16 @@ export default Vue.extend({
     },
 
     duration: {
-      type: [Number, Object],
+      type: Number,
       default: 250,
     },
   },
 
-  data: (vm) => ({
-    previousMove: vm.expanded ? ENTER : LEAVE,
-  }),
-
   computed: {
     wrapperStyle() {
-      const duration =
-        this.previousMove === ENTER ? this.leaveDuration : this.enterDuration
-
       return {
-        transitionDuration: `${duration}ms`,
+        transitionDuration: `${this.duration}ms`,
       }
-    },
-
-    enterDuration() {
-      return typeof this.duration === 'number'
-        ? this.duration
-        : this.duration.enter
-    },
-
-    leaveDuration() {
-      return typeof this.duration === 'number'
-        ? this.duration
-        : this.duration.leave
     },
   },
 
@@ -72,27 +49,21 @@ export default Vue.extend({
   },
 
   methods: {
-    async onEnter(el) {
+    onEnter(el) {
       this.setWrapperHeightTo(this.getContentHeight(), el)
     },
 
     onAfterEnter(el) {
       this.setWrapperHeightTo('auto', el)
-      this.previousMove = ENTER
     },
 
     onBeforeLeave(el) {
-      this.previousMove = LEAVE
       this.setWrapperHeightTo(this.getContentHeight(), el)
     },
 
-    async onLeave(el) {
+    onLeave(el) {
       el.scrollHeight
       this.setWrapperHeightTo(0, el)
-    },
-
-    onAfterLeave() {
-      this.previousMove = LEAVE
     },
 
     getContentHeight() {
@@ -104,7 +75,7 @@ export default Vue.extend({
      * @param {number | 'auto'} height
      */
     setWrapperHeightTo(height, el = this.$refs.wrapper) {
-      el.style.height = height === 'auto' ? height : `${height}px`
+      el.style.height = typeof height === 'number' ? `${height}px` : height
     },
   },
 })

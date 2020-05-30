@@ -33,14 +33,15 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+
+    duration: {
+      type: Number,
+      default: undefined,
+    },
   },
 
   data: () => ({
-    active: true,
-    duration: {
-      enter: 1000,
-      leave: 2000,
-    },
+    active: false,
   }),
 
   methods: {
