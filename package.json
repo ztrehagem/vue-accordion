@@ -1,32 +1,23 @@
 {
   "name": "@ztrehagem/vue-accordion",
-  "description": "A simple accordion component of Vue.js.",
-  "keywords": [
-    "Vue.js",
-    "Component",
-    "Accordion"
-  ],
   "version": "0.2.0",
+  "description": "A simple accordion component of Vue.js.",
   "author": "Shigeki Suwa <shigeki.suwa@ztrehagem.dev>",
-  "license": "UNLICENSED",
-  "publishConfig": {
-    "access": "public"
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name vue-accordion src/lib/VueAccordion.vue",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve",
+    "gh-pages": "PUBLIC_PATH=/vue-accordion/ vue-cli-service build --dest gh-pages",
+    "prepare": "npm run build"
   },
+  "main": "dist/vue-accordion.common.js",
   "files": [
     "dist"
   ],
-  "main": "dist/vue-accordion.common.js",
-  "scripts": {
-    "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-accordion src/lib/VueAccordion.vue",
-    "gh-pages": "PUBLIC_PATH=/vue-accordion/ vue-cli-service build --dest gh-pages",
-    "lint": "vue-cli-service lint",
-    "prepare": "npm run build"
-  },
   "dependencies": {
-    "@vue/cli-plugin-babel": "^4.3.1",
-    "@vue/cli-plugin-eslint": "^4.3.1",
-    "@vue/cli-service": "^4.3.1",
+    "@vue/cli-plugin-babel": "^4.4.1",
+    "@vue/cli-plugin-eslint": "^4.4.1",
+    "@vue/cli-service": "^4.4.1",
     "@vue/eslint-config-prettier": "^5.0.0",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.6.5",
@@ -40,6 +31,9 @@
     "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0"
   },
   "peerDependencies": {
@@ -48,10 +42,19 @@
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
+  "keywords": [
+    "Vue.js",
+    "Component",
+    "Accordion"
+  ],
+  "license": "UNLICENSED",
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
