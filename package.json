@@ -42,7 +42,7 @@
     "Component",
     "Accordion"
   ],
-  "license": "UNLICENSED",
+  "license": "Unlicense",
   "lint-staged": {
     "*.{js,vue}": [
       "vue-cli-service lint",
