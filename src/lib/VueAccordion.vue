@@ -50,14 +50,17 @@ export default Vue.extend({
 
   methods: {
     onEnter(el) {
+      el.style.overflow = 'hidden'
       this.setWrapperHeightTo(this.getContentHeight(), el)
     },
 
     onAfterEnter(el) {
+      el.style.overflow = ''
       this.setWrapperHeightTo('auto', el)
     },
 
     onBeforeLeave(el) {
+      el.style.overflow = 'hidden'
       this.setWrapperHeightTo(this.getContentHeight(), el)
     },
 
@@ -86,7 +89,6 @@ export default Vue.extend({
   transition-timing-function ease
   transition-property height
   height 0
-  overflow hidden
 
   &__inner
     display table
