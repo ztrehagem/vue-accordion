@@ -31,15 +31,18 @@ export default defineComponent({
     const onEnter = (el: Element): void => {
       const { height } = elInner.value!.getBoundingClientRect();
       (el as HTMLElement).style.height = `${height}px`;
+      (el as HTMLElement).style.overflowY = "hidden";
     };
 
     const onAfterEnter = (el: Element): void => {
       (el as HTMLElement).style.height = "auto";
+      (el as HTMLElement).style.overflowY = "";
     };
 
     const onBeforeLeave = (el: Element): void => {
       const { height } = (el as HTMLElement).getBoundingClientRect();
       (el as HTMLElement).style.height = `${height}px`;
+      (el as HTMLElement).style.overflowY = "hidden";
     };
 
     const onLeave = (el: Element): void => {

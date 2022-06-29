@@ -2,7 +2,6 @@
   transition-timing-function: ease;
   transition-property: height;
   height: 0;
-  overflow: hidden;
 }
 
 .vue-accordion__inner {
