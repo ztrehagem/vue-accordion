@@ -5,6 +5,8 @@
 ![](https://img.shields.io/npm/dm/@ztrehagem/vue-accordion)
 ![](https://img.shields.io/github/license/ztrehagem/vue-accordion)
 
+Live Demo: https://vue-accordion.lib.ztrehagem.dev/
+
 ## Installation
 
 ```sh
