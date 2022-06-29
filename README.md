@@ -1,8 +1,8 @@
 # @ztrehagem/vue-accordion
 
-![](https://img.shields.io/npm/v/@ztrehagem/vue-accordion/latest)
-![](https://img.shields.io/npm/dependency-version/@ztrehagem/vue-accordion/peer/vue)
-![](https://img.shields.io/npm/types/@ztrehagem/vue-accordion)
+[![](https://img.shields.io/npm/v/@ztrehagem/vue-accordion)](https://www.npmjs.com/package/@ztrehagem/vue-accordion)
+[![](https://img.shields.io/npm/v/@ztrehagem/vue-accordion/vue2)](https://www.npmjs.com/package/@ztrehagem/vue-accordion/v/vue2)
+![](https://img.shields.io/npm/dm/@ztrehagem/vue-accordion)
 ![](https://img.shields.io/github/license/ztrehagem/vue-accordion)
 
 ## Installation
